@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
+    var landmark: Landmark
+    
     var body: some View {
-        VStack {
+        ScrollView {
             MapView()
                 .ignoresSafeArea(edges: .top)
                 .frame(height: 300)
@@ -38,14 +40,14 @@ struct LandmarkDetail: View {
                 Text("Descriptive text goes here.")
             }
             .padding()
-
-            Spacer()
         }
+        .navigationTitle(landmark.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkDetail()
+        LandmarkDetail(landmark: landmarks[0])
     }
 }
